@@ -20,4 +20,6 @@
 
 
 
+## 此主题在Dear的基础上进行修改
+
 修改后效果可见：https://blog.nyanko.moe
