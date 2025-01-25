@@ -10,83 +10,429 @@ License: CC BY-NC-SA 4.0 DEED
 License URI: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans
 */
 :root {
-    --width: 660px;
-    --font-yahei: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Helvetica,Arial,"PingFangSC-Regular","Hiragino Sans GB","Lantinghei SC","Microsoft Yahei","Source Han Sans CN","WenQuanYi Micro Hei",SimSun,sans-serif;
-    --font-fangsong: Baskerville, "Times New Roman", "Liberation Serif", STFangsong, FangSong, FangSong_GB2312, "CWTEX\-F", serif;
-    --font-songti: Georgia, "Nimbus Roman No9 L", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "Source Han Serif CN", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW\-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU, serif;
-    --font-scale: 1em;
-    --background-color: #fff;
-    --heading-color: #222;
-    --text-color: #444;
-    --link-color: #3273dc;
-    --visited-color:  #8b6fcb;
-    --code-background-color: #f2f2f2;
-    --code-color: #222;
-    --blockquote-color: #222;
-    --gray-color: #aaa;
+    --width: 50rem;
+    --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-secondary: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-scale: 1.2em;
+
+    /* 浅色模式默认变量 */
+    --background-color: #fff; /* 浅色背景 */
+    --heading-color: #222; /* 浅色标题 */
+    --text-color: #444; /* 浅色文本 */
+    --link-color: #3273dc; /* 浅色链接 */
+    --visited-color: #8b6fcb; /* 浅色已访问链接 */
+    --code-background-color: #f2f2f2; /* 浅色代码背景 */
+    --code-color: #222; /* 浅色代码文本 */
+    --blockquote-color: #222; /* 浅色引用文本 */
+    --gray-color: #aaa; /* 浅色灰色 */
+    --nav-background: rgba(255, 255, 255, 0.8); /* 浅色导航栏背景 */
+    --link-card-background: #f8f9fa; /* 浅色模式下的卡片背景色 */
+    --link-card-border: #edf2f7; /* 浅色模式下的卡片边框色 */
 }
+
+/* 深色模式变量 */
 @media (prefers-color-scheme: dark) {
     :root {
-        --background-color: #111;
-        --heading-color: #eee;
-        --text-color: #ddd;
-        --link-color: #6ab0e5;
-        --visited-color:  #8b6fcb;
-        --code-background-color: #000;
-        --code-color: #ddd;
-        --blockquote-color: #ccc;
-        --gray-color: #888;
+        --background-color: #0d1117; /* 深色背景 */
+        --heading-color: #e3e9f0; /* 深色标题 */
+        --text-color: #c9d1d9; /* 深色文本 */
+        --link-color: #e3bc5e; /* 深色链接 */
+        --visited-color: #dfcc9e; /* 深色已访问链接 */
+        --code-background-color: #000; /* 深色代码背景 */
+        --code-color: #c9d1d9; /* 深色代码文本 */
+        --blockquote-color: #c9d1d9; /* 深色引用文本 */
+        --gray-color: #888; /* 深色灰色 */
+        --nav-background: rgba(0, 0, 0, 0.5); /* 深色导航栏背景 */
+        --link-card-background: #161b22; /* 深色模式下的卡片背景色 */
+        --link-card-border: #21262d; /* 深色模式下的卡片边框色 */
     }
 }
+
+/* 浅色模式变量（显式定义，可选） */
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-color: #fff; /* 浅色背景 */
+        --heading-color: #222; /* 浅色标题 */
+        --text-color: #444; /* 浅色文本 */
+        --link-color: #3273dc; /* 浅色链接 */
+        --visited-color: #8b6fcb; /* 浅色已访问链接 */
+        --code-background-color: #f2f2f2; /* 浅色代码背景 */
+        --code-color: #222; /* 浅色代码文本 */
+        --blockquote-color: #222; /* 浅色引用文本 */
+        --gray-color: #aaa; /* 浅色灰色 */
+        --nav-background: rgba(255, 255, 255, 0.8); /* 浅色导航栏背景 */
+    }
+}
+
+/* 通用样式 */
 body {
-    font-family: var(--font-yahei); /* 可替换 --font-fangsong 或 --font-songti 字体 */
+    font-family: var(--font-secondary);
     font-size: var(--font-scale);
-    margin: auto;
+    margin: 50px auto;
     padding: 20px;
     max-width: var(--width);
-    text-align: left;
+    text-align: left; /* 确保内容左对齐 */
     background-color: var(--background-color);
     word-wrap: break-word;
     overflow-wrap: break-word;
-    line-height: 1.7;
+    line-height: 1.5;
     color: var(--text-color);
 }
-html{scroll-behavior:smooth;}
-h1,h2,h3,h4,h5,h6{color:var(--heading-color);display:inherit}
-a{color:var(--link-color);cursor:pointer;text-decoration:none;border-bottom:1px solid transparent}
-a:hover,a[aria-current*="page"]{border-bottom:1px solid}
-nav a{margin-right:8px}
-strong,b{color:var(--heading-color)}
-button{margin:0;cursor:pointer}
-table{width:100%}
-hr{border:0;border-top:1px dashed}
-img{max-width:100%;height:auto}
-time,.intro{color:var(--gray-color);}
-code{font-family:monospace;padding:2px;background-color:var(--code-background-color);color:var(--code-color);border-radius:4px}
-blockquote{border-left:1px solid #999;color:var(--code-color);padding-left:20px;font-style:italic}
-input{border-radius:4px;border:1px solid var(--gray-color);margin:0 0 15px 0;padding:10px;width:50%;font-size:0.9em;background:var(--background-color);color:var(--heading-color)}
-input[type="submit"]{border:none;padding:9px 16px 10px;text-align:center;width:80px;display:inline-flex;background-color:var(--heading-color);color:var(--code-background-color);}
-input[type="submit"]:hover{cursor:pointer;opacity:.7}
-textarea{border-radius:4px;border:1px solid var(--gray-color);display:block;margin:0 0 10px;padding:10px;width:calc(100% - 25px);background:var(--background-color);color:var(--code-color);}
-input:focus,textarea:focus{border:1px solid var(--text-color);outline:0}
-header,footer{padding:20px 0}
-.title:hover{text-decoration:none;border:none}
-.title h1,.title h2{font-size:1.5em}
-ul.posts{list-style-type:none;padding:unset}
-ul.posts li{display:flex;margin:3px 0}
-ul.posts li span{flex:0 0 115px}
-ul.posts li a:visited{color:var(--visited-color)}
-.tags{margin-top:30px;color:var(--gray-color)}
-.tags a{margin:0 5px 0 2px}
-.comment-respond{text-align:left;padding-top:40px;}
-.comlist{margin:80px auto 0;}
-.commentlist,.commentlist .children{list-style: none;padding:0;margin-bottom:40px;}
-.comment{margin:30px 0;list-style: none;text-align:left;}
-.comment .comment{margin-left:35px;}
-.comment-author cite{font-weight:bold;font-style:normal;}
-.comment-author .says,.comment-author .avatar,.screen-reader-text{display:none}
-.comment-meta a{color: var(--gray-color);font-size: 0.9rem;}
-.comlist input{display:block;width:calc(100% - 25px);}
-.comlist input[type="submit"]{width:initial;}
-.comlist input[type="checkbox"]{display:inline-block;width: initial;}
-#cancel-comment-reply-link{margin-left:15px;font-weight: normal;}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-main);
+    color: var(--heading-color);
+    text-align: left; /* 确保标题左对齐 */
+}
+
+strong, b {
+    color: var(--heading-color);
+}
+
+a {
+    color: var(--link-color);
+    cursor: pointer;
+    text-decoration: none !important; /* 正常状态下不显示下划线 */
+}
+
+a:hover {
+    text-decoration: none !important; /* 悬停时不显示下划线 */
+    font-weight: bold; /* 悬停时加粗 */
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--nav-background); /* 使用变量设置导航栏背景 */
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    z-index: 999;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    font-family: var(--font-main); /* 使用和标题一样的字体 */
+    font-weight: bold; /* 使用粗体 */
+}
+
+nav p {
+    width: 50rem;
+    padding: 0 20px;
+    margin: 0 auto;
+    font-family: var(--font-main); /* 使用和标题一样的字体 */
+    font-weight: bold; /* 使用粗体 */
+    text-align: left; /* 确保导航栏内容左对齐 */
+}
+
+nav a {
+    margin-right: 15px;
+    font-size: 0.9em; /* 保持字体大小不变 */
+    font-family: var(--font-main); /* 使用和标题一样的字体 */
+    font-weight: bold; /* 使用粗体 */
+}
+
+code {
+    font-family: monospace;
+    padding: 2px;
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    border-radius: 3px;
+}
+
+blockquote {
+    border-left: 1px solid #999;
+    color: var(--blockquote-color);
+    padding-left: 20px;
+    font-style: italic;
+}
+
+footer {
+    padding: 25px 0;
+    text-align: left; /* 确保 footer 内容左对齐 */
+    max-width: var(--width); /* 限制 footer 的宽度 */
+    margin: 0 auto; /* 水平居中 */
+}
+
+footer p, footer a, footer div {
+    text-align: left; /* 确保 footer 内的所有内容左对齐 */
+}
+
+button {
+    border: 0;
+    background-color: inherit;
+    text-decoration: underline;
+    color: var(--heading-color);
+}
+
+.title {
+    display: block; /* 默认显示标题 */
+}
+
+.title {
+    display: block; /* 默认显示标题 */
+}
+
+body:not(.home) .title {
+    display: none; /* 除首页外隐藏标题 */
+}
+
+body.home .title {
+    display: block; /* 首页显示标题 */
+}
+
+.title h1 {
+    color: var(--link-color);
+}
+
+.highlight,
+.code {
+    padding: 1px 15px;
+    background-color: var(--code-background-color);
+    color: var(--code-color);
+    border-radius: 3px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    overflow-x: auto;
+}
+
+ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+}
+
+ul.blog-posts li {
+    display: flex;
+}
+
+ul.blog-posts li span {
+    flex: 0 0 130px;
+}
+
+ul.blog-posts li a:visited {
+    color: var(--visited-color);
+}
+
+/* 友情链接页面样式 */
+.links-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.link-item {
+    flex: 1 1 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: var(--background-color);
+    border-radius: 8px;
+    border: 1px solid var(--link-card-border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 手机端一行显示一个卡片 */
+@media screen and (max-width: 768px) {
+    .link-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+.link-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.link-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    margin-right: 15px;
+}
+
+.link-content {
+    flex: 1;
+}
+
+.link-content a {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--link-color);
+    display: block;
+    margin-bottom: 5px;
+    text-decoration: none;
+}
+
+.link-description {
+    font-size: 14px;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+ul.posts {
+    list-style-type: none;
+    padding: unset;
+}
+
+ul.posts li {
+    display: flex;
+    margin: 3px 0;
+}
+
+ul.posts li span {
+    flex: 0 0 115px;
+}
+
+ul.posts li a:visited {
+    color: var(--visited-color);
+}
+
+.tags {
+    margin-top: 30px;
+    color: var(--gray-color);
+}
+
+.tags a {
+    margin: 0 5px 0 2px;
+}
+
+.comment-respond {
+    text-align: left;
+    padding-top: 40px;
+}
+
+.comlist {
+    margin: 80px auto 0;
+}
+
+.commentlist, .commentlist .children {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.comment {
+    margin: 30px 0;
+    list-style: none;
+    text-align: left;
+}
+
+.comment .comment {
+    margin-left: 35px;
+}
+
+.comment-author cite {
+    font-weight: bold;
+    font-style: normal;
+}
+
+.comment-author .says, .comment-author .avatar, .screen-reader-text {
+    display: none;
+}
+
+.comment-meta a {
+    color: var(--gray-color);
+    font-size: 0.9rem;
+}
+
+.comlist input {
+    display: block;
+    width: calc(100% - 25px);
+}
+
+.comlist input[type="submit"] {
+    width: initial;
+}
+
+.comlist input[type="checkbox"] {
+    display: inline-block;
+    width: initial;
+}
+
+#cancel-comment-reply-link {
+    margin-left: 15px;
+    font-weight: normal;
+}
+
+header {
+    display: flex;
+    align-items: center; /* 垂直居中对齐标题和导航项 */
+}
+
+.site-title {
+    margin-right: 20px; /* 可选：为标题和导航项之间添加间距 */
+}
+
+header {
+    display: flex;
+    align-items: center; /* 垂直居中对齐标题和导航项 */
+}
+
+.site-title {
+    margin-right: 20px; /* 可选：为标题和导航项之间添加间距 */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+time, .intro {
+    color: var(--gray-color);
+}
+
+input {
+    border-radius: 4px;
+    border: 1px solid var(--gray-color);
+    margin: 0 0 15px 0;
+    padding: 10px;
+    width: 50%;
+    font-size: 0.9em;
+    background: var(--background-color);
+    color: var(--heading-color);
+}
+
+input[type="submit"] {
+    border: none;
+    padding: 9px 16px 10px;
+    text-align: center;
+    width: 80px;
+    display: inline-flex;
+    background-color: var(--heading-color);
+    color: var(--code-background-color);
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+textarea {
+    border-radius: 4px;
+    border: 1px solid var(--gray-color);
+    display: block;
+    margin: 0 0 10px;
+    padding: 10px;
+    width: calc(100% - 25px);
+    background: var(--background-color);
+    color: var(--code-color);
+}
+
+input:focus, textarea:focus {
+    border: 1px solid var(--text-color);
+    outline: 0;
+}
+
+header, footer {
+    padding: 20px 0;
+}
+
+.title:hover {
+    text-decoration: none;
+    border: none;
+}
+
+.title h1, .title h2 {
+    font-size: 1.5em;
+}
